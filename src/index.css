@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Light mode variables */
+    --bg-light: #1f2937;
+    --bg-dark: #f9fafb;
+    --text-light: #f9fafb;
+    --text-dark: #1f2937;
+    --primary: #60a5fa;
+    --primary-dark: #3b82f6;
+    --error: #ef4444;
+    --placeholder-light: #6b7280;
+    --placeholder-dark: #9ca3af;
+  }
+
+  .dark {
+    /* Dark mode variables */
+    --bg-light: #f9fafb;
+    --bg-dark: #1f2937;
+    --text-light: #1f2937;
+    --text-dark: #f9fafb;
+    --primary: #3b82f6;
+    --primary-dark: #60a5fa;
+    --error: #ef4444;
+    --placeholder-light: #9ca3af;
+    --placeholder-dark: #6b7280;
+  }
+
+  body {
+    @apply bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-light)] dark:text-[var(--text-dark)] transition-colors duration-300 font-[Inter] text-base;
+  }
+
+  .glass {
+    @apply bg-gray-800/70 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50;
+  }
+
+  .card {
+    @apply bg-gray-800/70 rounded-lg border border-gray-500 shadow-md hover:shadow-lg transition-shadow duration-300;
+  }
+
+  input {
+    @apply w-full p-3 rounded-lg bg-white dark:bg-gray-700;
+  }
+
+  input:focus {
+    @apply ring-0 outline-none;
+  }
+
+  button {
+    @apply font-medium transition-colors rounded-lg;
+  }
+}
