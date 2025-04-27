@@ -3,22 +3,32 @@ export interface User {
   password: string;
 }
 
-export interface Post {
+export interface Employee {
   id: number;
-  title: string;
-  description: string;
-  readable_publish_date: string;
-  cover_image: string | null;
-  tag_list: string[];
-  positive_reactions_count: number;
-  comments_count: number;
-  reading_time_minutes: number;
-  user: {
+  name: string;
+  timezone: string;
+  checked_in_at: string | null;
+  checked_out_at: string | null;
+  checkout_message: string | null;
+}
+
+export interface AttendanceDay {
+  date: string;
+  employees: Employee[];
+}
+
+export interface AttendanceData {
+  current_day: AttendanceDay;
+  yesterday: AttendanceDay;
+}
+
+export interface TeamResponse {
+  team: {
+    id: number;
     name: string;
   };
-  organization?: {
-    name: string;
-  };
+  attendance_data: AttendanceData;
+  status: string;
 }
 
 export interface AuthFormData {

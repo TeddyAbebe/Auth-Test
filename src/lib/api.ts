@@ -1,8 +1,8 @@
 import axios from "axios";
-import { User, Post } from "./types";
+import { User, TeamResponse } from "./types";
 
 const apiClient = axios.create({
-  baseURL: "https://dev.to/api",
+  baseURL: "https://teamcheckout.com/api",
   timeout: 10000,
 });
 
@@ -27,27 +27,24 @@ export const login = async (user: User): Promise<User> => {
   return foundUser;
 };
 
-export const fetchPosts = async (page: number = 1): Promise<Post[]> => {
+export const fetchTeamData = async (): Promise<TeamResponse> => {
   try {
-    const response = await apiClient.get<Post[]>("/articles", {
-      params: {
-        per_page: 5,
-        page,
-      },
-    });
-    console.log(`fetchPosts: Page ${page} fetched successfully`, response.data);
+    const response = await apiClient.get<TeamResponse>("/teams/42");
+    console.log("fetchTeamData: Team data fetched successfully", response.data);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.error(
-        "fetchPosts: Axios error",
+        "fetchTeamData: Axios error",
         error.message,
         error.response?.status
       );
-      throw new Error(`Failed to fetch posts: ${error.message}`);
+      throw new Error(`Failed to fetch team data: ${error.message}`);
     } else {
-      console.error("fetchPosts: Unexpected error", error);
-      throw new Error("Failed to fetch posts: An unexpected error occurred");
+      console.error("fetchTeamData: Unexpected error", error);
+      throw new Error(
+        "Failed to fetch team data: An unexpected error occurred"
+      );
     }
   }
 };
