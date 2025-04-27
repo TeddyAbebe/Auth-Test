@@ -29,7 +29,7 @@ export default function Navbar() {
           animate={{ opacity: 1 }}
           className="text-3xl font-bold text-white"
         >
-          AuthContentViewer
+          Employee Activity Dashboard
         </motion.h1>
 
         <div className="hidden md:flex items-center space-x-4">
