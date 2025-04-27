@@ -27,7 +27,7 @@ export default function Navbar() {
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-3xl font-bold text-white"
+          className="text-sm sm:text-3xl font-bold text-white"
         >
           Employee Activity Dashboard
         </motion.h1>
